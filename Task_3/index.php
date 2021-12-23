@@ -16,4 +16,4 @@ function digit(int $number): int
     return $number;
 }
 
-digit(5689);
+echo digit(5689);

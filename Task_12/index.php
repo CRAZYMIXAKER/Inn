@@ -22,16 +22,37 @@ class Mycalculator
         return $this;
     }
 
+    public function minus(): Mycalculator
+    {
+        $this->result = $this->numberOne - $this->numberTwo;
+        return $this;
+    }
+
     public function multiply(): Mycalculator
     {
         $this->result = $this->numberOne * $this->numberTwo;
         return $this;
     }
 
-    public function minus(): Mycalculator
+    public function divide(): Mycalculator
     {
-        $this->result = $this->numberOne - $this->numberTwo;
+        $this->result = $this->numberOne / $this->numberTwo;
         return $this;
+    }
+
+    public function addBy(int $number): float
+    {
+        return $this->result+$number;
+    }
+
+    public function minusBy(int $number): float
+    {
+        return $this->result-$number;
+    }
+
+    public function multiplyBy(int $number): float
+    {
+        return $this->result*$number;
     }
 
     public function divideBy(int $number): float
@@ -40,8 +61,8 @@ class Mycalculator
     }
 }
 
-$mycalc = new MyCalculator(12, 6);
+$mycalc = new MyCalculator(120, 6);
 echo $mycalc->add() . '<br>'; // Displays 18
-echo $mycalc->multiply(). '<br>'; // Displays 72
-// Calculation by chain	`
-echo $mycalc->add()->divideBy(9); // Displays 2 ( (12+6)/9=2 )
+echo $mycalc->multiply() . '<br>'; // Displays 72
+// Calculation by chain
+echo $mycalc->add()->divideBy(9); // Displays 2

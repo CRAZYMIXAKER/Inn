@@ -1,5 +1,7 @@
 <?php
 
+ini_set('precision', 301);
+
 function fib(int $n, array $arr = [1, 1]): float
 {
     do {

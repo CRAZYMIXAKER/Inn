@@ -1,10 +1,8 @@
 <?php
-function countDaysToBirthday():int
+
+function countDaysToBirthday($dateBirthday)
 {
-    $dateNow = new DateTime("now");
-    $dateBirthday = new DateTime("2021-12-29");
-    $interval = $dateNow->diff($dateBirthday);
-    return $interval->days;
+    return date_diff((new DateTime())->setTime(00, 00), new DateTime($dateBirthday))->days;
 }
 
-echo 'осталось ' . countDaysToBirthday() . 'дня(-ей/день)';
+echo countDaysToBirthday("2021-12-31") . ' day(-s) left until birthday';

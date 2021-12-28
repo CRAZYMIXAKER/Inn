@@ -1,8 +1,8 @@
 <?php
 
-function greatestNumber(int $a): string
+function greatestNumber(int $inputNumber): string
 {
-    return $a > 30 ? "$a - greatest number"  : ($a > 20 ? "30" : ($a > 10 ? "20, 30" : "10, 20, 30"));
+    return $inputNumber > 30 ? "$inputNumber - greatest number"  : ($inputNumber > 20 ? "30" : ($inputNumber > 10 ? "20, 30" : "10, 20, 30"));
 }
 
 echo greatestNumber(15);

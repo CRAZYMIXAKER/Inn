@@ -104,10 +104,7 @@ abstract class Product implements Services
         return static::$arrayProduct[$key];
     }
 
-    public function getAll()
-    {
-        return self::$arrayProduct;
-    }
+    abstract public function getAll();
 }
 abstract class Service implements Services
 {
@@ -185,54 +182,82 @@ abstract class Service implements Services
     public function __set(string $key, array $value)
     {
         static::$arrayService[static::class][] = [
-                "name"=> $value[0],
-                "manufacturer" => $value[1],
-                "releaseDate" => $value[2],
-                "cost" => $value[3]
+                "deadline"=> $value[0],
+                "runQueue" => $value[1],
+                "cost" => $value[2]
         ];
     }
 
-    public function __get(string $key)
+    public function __get(string $key): array
     {
         return static::$arrayService[$key];
     }
 
+    abstract public function getAll();
+}
+
+class TV extends Product
+{
+    public function getAll(): array
+    {
+        return parent::$arrayProduct;
+    }
+}
+
+class Laptop extends Product
+{
+    public function getAll()
+    {
+        return parent::$arrayProduct;
+    }
+}
+
+class MobilePhone extends Product
+{
+    public function getAll()
+    {
+        return parent::$arrayProduct;
+    }
+}
+
+class Refrigerator extends Product
+{
+    public function getAll()
+    {
+        return parent::$arrayProduct;
+    }
+}
+
+class Warranty extends Service
+{
     public function getAll()
     {
         return self::$arrayService;
     }
 }
 
-class TV extends Product
-{
-}
-
-class Laptop extends Product
-{
-}
-
-class MobilePhone extends Product
-{
-}
-
-class Refrigerator extends Product
-{
-}
-
-class Warranty extends Service
-{
-}
-
 class Delivery extends Service
 {
+    public function getAll()
+    {
+        return self::$arrayService;
+    }
 }
 
 class Install extends Service
 {
+    public function getAll()
+    {
+        return self::$arrayService;
+    }
 }
 
 class Configure extends Service
 {
+    public function getAll()
+    {
+        return self::$arrayService;
+    }
 }
 
 class Client
@@ -302,23 +327,28 @@ foreach ($objProduct->getAll() as $key => $product) {
 }
 
 //add product to arrayProduct
-$obj = new TV();
-$obj->tv = ["test", "tt", "2023", 5555 ];
+$objTV = new TV();
+$objTV->tv = ["test", "tt", "2023", 5555 ];
+$objTV->tv = ["b", "b", "20223", 553255 ];
 
-$obj2 = new TV();
-$obj2->tv = ["b", "b", "20223", 553255 ];
+$objLaptop = new Laptop();
+$objLaptop->lp = ["a", "a", "202323", 5 ];
 
-$obj3 = new Laptop();
-$obj3->lp = ["a", "a", "202323", 5 ];
+$objConfigure = new Configure();
+$objConfigure->cf = ["4 days", "Configure3214", 241];
 
 //add services to arrayclient (create customer cart)
 $objTest = new Client;
 $objTest->addServices("TV", 2);
 $objTest->addServices("Laptop", 0);
 $objTest->addServices("TV", 1);
+$objTest->addServices("Refrigerator", 2);
+$objTest->addServices("MobilePhone", 1);
 //add service to arrayClient
-$objTest->addServices("Delivery", 1);
-$objTest->addServices("Configure", 2);
+$objTest->addServices("Delivery", 0);
+$objTest->addServices("Configure", 1);
+$objTest->addServices("Install", 2);
+$objTest->addServices("Warranty", 1);
 
 echo '<br>Customer cart: <br>';
 foreach ($objTest->getInf() as $value) {

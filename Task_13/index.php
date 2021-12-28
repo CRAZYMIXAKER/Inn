@@ -6,8 +6,6 @@ interface Services
 
 require __DIR__ . '/autoload.php';
 
-
-
 //show all products for client
 $objProduct = new TV();
 

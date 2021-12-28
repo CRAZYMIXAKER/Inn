@@ -2,12 +2,12 @@
 
 function editArr(array $arr, int $position)
 {
-    var_dump($arr);
     unset($arr[$position]);
-
-    echo "</br>";
-    $arr = array_values($arr);
-    var_dump($arr);
+    return array_values($arr);
 }
 
-editArr([1, 2, 3, 4, 5], 3);
+$arr = [1, 2, 3, 4, 5];
+
+print_r($arr);
+echo "</br>";
+print_r(editArr($arr, 3));

@@ -1,10 +1,21 @@
 <?php
 
-function workWithJSON(mixed $json)
+function workWithJSON(mixed $json): string
 {
-    var_dump(json_decode($json));
-    echo '</br></br>';
-    var_dump(json_decode($json, true));
+    $arr = json_decode($json, true);
+    $str="";
+
+    foreach ($arr as $key => $item) {
+        if (is_array($item)) {
+            foreach ($item as $key => $value) {
+                $str .= "$key: $value <br>";
+            }
+        } else {
+            $str .= "$key: $item <br>";
+        }
+    }
+
+    return $str;
 }
 
 $json = '{
@@ -15,4 +26,5 @@ $json = '{
 	}
 	}';
 
-workWithJSON($json);
+
+echo workWithJSON($json);

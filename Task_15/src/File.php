@@ -33,7 +33,7 @@ class File extends Validate
         return $arrParam;
     }
 
-    public function metaInformation($dir, $fileName):array|bool
+    public function metaInformation($dir, $fileName): array|bool
     {
         // opening the file in binary mode
         $fp = fopen("$dir/$fileName", 'rb');

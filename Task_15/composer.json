@@ -1,0 +1,17 @@
+{
+    "name": "zs/task_15",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CRAZYMIXAKER",
+            "email": "zombisuki@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.3"
+    }
+}

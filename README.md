@@ -5,18 +5,19 @@ Create HTML form with 'First Name', 'Last Name', 'Email', 'Confirm Email', 'Pass
 
 Create 'users' table to save new user. Use MySQL database. The table should have following fields:
 
-• id - unsigned int, primary index, auto increment;
+â€¢ id - unsigned int, primary index, auto increment;
 
-• email - varchar, unique, non-empty;
+â€¢ email - varchar, unique, non-empty;
 
-• first_name - varchar, non-empty;
+â€¢ first_name - varchar, non-empty;
 
-• last_name - varchar, non-empty;
+â€¢ last_name - varchar, non-empty;
 
-• password - char. The size is based on hash algorithm that you choose;
+â€¢ password - char. The size is based on hash algorithm that you choose;
 
-• created_date - timestamp, current_timestamp;
+â€¢ created_date - timestamp, current_timestamp;
 
 Use PDO with transactions to interact with database. If an error occurred when adding a user account to the database, display a message about it to the user interface.
 
 Implement MVC pattern for this application where views hold your HTML templates, models hold business logic (interaction with the database) and controllers connect models with views.
+E-mail: Admin@gmail.com, password: Admin2@

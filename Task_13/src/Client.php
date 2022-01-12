@@ -44,8 +44,10 @@ class Client
             foreach ($objService->getAll() as $key => $product) {
                 echo $key . "<br>";
                 foreach ($product as $item) {
+                    echo "<pre>";
                     print_r($item);
                     echo "<br>";
+                    echo "</pre>";
                 }
                 echo "<br>";
             }

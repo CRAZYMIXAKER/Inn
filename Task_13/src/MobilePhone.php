@@ -2,7 +2,7 @@
 
 class MobilePhone extends Product
 {
-    public function getAll()
+    public function getAll(): array
     {
         return parent::$arrayProduct;
     }

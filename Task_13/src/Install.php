@@ -2,7 +2,7 @@
 
 class Install extends Service
 {
-    public function getAll()
+    public function getAll(): array
     {
         return self::$arrayService;
     }

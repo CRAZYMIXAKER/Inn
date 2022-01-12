@@ -1,9 +1,8 @@
 <?php
 
 namespace controllers;
-require __DIR__ . '/../../vendor/autoload.php';
 
-use models\Users;
+use model\Users;
 
 class Registration extends Users
 {

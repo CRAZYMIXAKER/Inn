@@ -1,0 +1,19 @@
+{
+    "name": "zs/task_16",
+    "autoload": {
+        "psr-4": {
+            "controllers\\": "controllers/",
+            "model\\": "model/",
+            "core\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CRAZYMIXAKER",
+            "email": "zombisuki@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.3"
+    }
+}

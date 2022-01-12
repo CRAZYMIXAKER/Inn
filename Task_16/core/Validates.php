@@ -2,7 +2,7 @@
 
 namespace core;
 
-use models\Users;
+use model\Users;
 
 class Validates extends Users
 {

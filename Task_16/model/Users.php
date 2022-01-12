@@ -1,6 +1,6 @@
 <?php
 
-namespace models;
+namespace model;
 
 use core\DB;
 

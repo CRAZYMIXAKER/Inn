@@ -2,6 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+use src\Authorization;
 use src\Twig;
 
 $objTwig = new Twig();

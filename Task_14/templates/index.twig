@@ -1,0 +1,13 @@
+<form action="" method="post">
+        <label for="email">E-mail</label>
+        <br>
+        <input id="email" type="email" name="email" placeholder="Email@gmail.com"
+           pattern="^([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})" autofocus required>
+        <br>
+        <label for="password">Password</label>
+        <br>
+        <input id="password" type="password" name="password" placeholder="password" required>
+        <br><br>
+        <button>Authorization</button> <br>
+        {{ error ?? ''}}
+</form>

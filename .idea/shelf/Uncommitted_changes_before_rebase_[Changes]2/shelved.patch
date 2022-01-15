@@ -1,0 +1,24 @@
+Index: README.md
+===================================================================
+diff --git a/README.md b/README.md
+deleted file mode 100644
+--- a/README.md	(revision 6f284358958b6f69566325ec7c30b1b5570b932b)
++++ /dev/null	(revision 6f284358958b6f69566325ec7c30b1b5570b932b)
+@@ -1,1 +0,0 @@
+-# Inn
+\ No newline at end of file
+Index: Task_1/index.php
+===================================================================
+diff --git a/Task_1/index.php b/Task_1/index.php
+deleted file mode 100644
+--- a/Task_1/index.php	(revision 6f284358958b6f69566325ec7c30b1b5570b932b)
++++ /dev/null	(revision 6f284358958b6f69566325ec7c30b1b5570b932b)
+@@ -1,8 +0,0 @@
+-<?php
+-
+-function greatestNumber(int $a, int $b, int $c): int
+-{
+-    return $a > $b && $a > $c ? $a : ($b > $a && $b > $c ? $b : $c);
+-}
+-
+-echo 'Greatest Number: ' . greatestNumber(10, 20, 30);

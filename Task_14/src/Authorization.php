@@ -12,12 +12,12 @@ class Authorization
     protected static array $loginCredentials = [
         'user1@test.com' => [
             'name' => 'Джон',
-            'password' => '$2y$10$8YXvyVVWsBDV874DwFDheum.fg8kxfYnV86wpBnX1E/ETgB/BeYea',
+            'password' => '$2y$10$8YXvyVVWsBDV874DwFDheum.fg8kxfYnV86wpBnX1E/ETgB/BeYea', // what is the password ?
 
         ],
         'user2@test.com' => [
             'name' => 'Джейн',
-            'password' => '$2y$10$3BioYxSFyW4oi2E91PUB0uRn/peCoTrs3BtoUMORc8ieeyKhqEITC',
+            'password' => '$2y$10$3BioYxSFyW4oi2E91PUB0uRn/peCoTrs3BtoUMORc8ieeyKhqEITC', // what is the password ?
         ],
     ];
 

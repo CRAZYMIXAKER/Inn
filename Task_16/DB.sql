@@ -1,9 +1,4 @@
-drop database IF EXISTS Inn;
-CREATE DATABASE IF NOT EXISTS Inn;
-
-use Inn;
-
-CREATE TABLE Users
+CREATE TABLE users
 (
   id_user INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   email varchar(256) NOT NULL UNIQUE,
@@ -14,7 +9,7 @@ CREATE TABLE Users
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
-INSERT Users
+INSERT users
 (email, first_name, last_name, password)
 VALUES
 ('Admin@gmail.com', 'fname', 'lname', '$2y$10$umBp0/Q5LuCxxlGyiWV/tOdowsMQuCc7FH6/WPKHWSqWKd6TP4Que'),

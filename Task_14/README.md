@@ -1,8 +1,6 @@
 # Inn
 
-php: 8.0
-E-mail: user1@test.com, user2@test.com
-password: your_hash_here1, your_hash_here2
+php: 8.0 E-mail: user1@test.com, user2@test.com password: your_hash_here1, your_hash_here2
 
 Create authentication form.
 

@@ -4,9 +4,8 @@ namespace src;
 
 class Authorization
 {
-
     protected $render;
-    protected $errors = [];
+    protected $error = '';
     protected $email;
     protected $password;
 
@@ -28,28 +27,15 @@ class Authorization
         $this->password = trim($password);
     }
 
-    protected function validate()
-    {
-        if (!password_verify($this->password, self::$loginCredentials[$this->email]['password'])) {
-            $this->errors[] = 'Password wrong';
-        }
-    }
-
     public function signIn(): string
     {
         $objTwig = new Twig();
 
-        if (isset(self::$loginCredentials[$this->email])) {
-            $this->validate();
-
-            if (empty($this->errors)) {
-                $this->render = $objTwig->template('hello', ['user' => self::$loginCredentials[$this->email]]);
-            } else {
-                $this->render = $objTwig->template('index', ['errors' => $this->errors]);
-            }
+        if (isset(self::$loginCredentials[$this->email]) && password_verify($this->password, self::$loginCredentials[$this->email]['password'])) {
+            $this->render = $objTwig->template('hello', ['user' => self::$loginCredentials[$this->email]]);
         } else {
-            $this->errors[] = 'Invalid login';
-            $this->render = $objTwig->template('index', ['errors' => $this->errors]);
+            $this->error = 'Password or E-mail is not correct';
+            $this->render = $objTwig->template('index', ['error' => $this->error]);
         }
         return $this->render;
     }

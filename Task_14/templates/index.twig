@@ -9,7 +9,5 @@
         <input id="password" type="password" name="password" placeholder="password" required>
         <br><br>
         <button>Authorization</button> <br>
-        {% for error in errors %}
-                {{ error }}<br>
-        {% endfor %}
+        {{ error ?? ''}}
 </form>

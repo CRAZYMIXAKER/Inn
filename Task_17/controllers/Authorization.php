@@ -22,7 +22,15 @@ class Authorization extends Users
                 $_SESSION['auth'] = ['ip' => $_SERVER['REMOTE_ADDR'], 'change' => 0];
             }
 
-            if ($_SESSION['auth']['change'] < 3 && !isset($_COOKIE['banPoIp'])) {
+            if (isset($_SESSION['banPoIp'])) {
+                $timeNow = new \DateTime();
+                $difference = $_SESSION['banPoIp']->diff($timeNow);
+                if ($difference->i > 15) {
+                    unset($_SESSION['banPoIp']);
+                }
+            }
+
+            if ($_SESSION['auth']['change'] < 3 && !isset($_SESSION['banPoIp'])) {
                 $_SESSION['auth']['change']++;
 
                 $email = trim($_POST['email']);
@@ -49,7 +57,7 @@ class Authorization extends Users
                     if ($_SESSION['auth']['change'] == 3) {
                         unset($_SESSION['auth']);
                         (new \core\Log)->badAuthorization($_SERVER['REMOTE_ADDR'], trim($_POST['email']));
-                        setcookie('banPoIp', $_SERVER['REMOTE_ADDR'], time() + 900, '/');
+                        $_SESSION['banPoIp'] = new \DateTime();
                         $arrReturn['error'] = 'You are was banned! Wait 15 min';
                     } else {
                         $arrReturn['error'] = 'login or password is not correct';

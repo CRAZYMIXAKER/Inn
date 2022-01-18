@@ -1,0 +1,10 @@
+{% extends "v_base.twig" %}
+
+{% block main %}
+    <div>size: {{ file.size }}</div>
+    <div> name: {{ file.name }}</div>
+    <br>
+    {% for key, item in metaInformation %}
+        <div>{{ key }} => {{ item }}</div>
+    {% endfor %}
+{% endblock %}

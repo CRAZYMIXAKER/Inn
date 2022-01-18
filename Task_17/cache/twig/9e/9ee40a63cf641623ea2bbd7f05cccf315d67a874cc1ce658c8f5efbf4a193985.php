@@ -119,7 +119,7 @@ class __TwigTemplate_cbc0efbf7a53dc7618a10a50db8724ea08072e396831bbafba8c6c54b5b
         <button>Registration</button>
         <br>
     </form>
-    <div><a href=\"../\">Are you already registered?</a></div>
+    <div><a href=\"/Task_17/Authorization/signIn\">Are you already registered?</a></div>
 ";
     }
 

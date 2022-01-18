@@ -46,15 +46,17 @@ class Authorization extends Users
                     header("Location: /Task_17");
                     exit();
                 } else {
-                    $arrReturn['error'] = 'login or password is not correct';
-                    $arrReturn['email'] = $email;
+                    if ($_SESSION['auth']['change'] == 3) {
+                        unset($_SESSION['auth']);
+                        (new \core\Log)->badAuthorization($_SERVER['REMOTE_ADDR'], trim($_POST['email']));
+                        setcookie('banPoIp', $_SERVER['REMOTE_ADDR'], time() + 900, '/');
+                        $arrReturn['error'] = 'You are was banned! Wait 15 min';
+                    } else {
+                        $arrReturn['error'] = 'login or password is not correct';
+                        $arrReturn['email'] = $email;
+                    }
                 }
             } else {
-                if (!isset($_COOKIE['banPoIp'])) {
-                    unset($_SESSION['auth']);
-                    (new \core\Log)->badAuthorization($_SERVER['REMOTE_ADDR'], trim($_POST['email']));
-                    setcookie('banPoIp', $_SERVER['REMOTE_ADDR'], time() + 900, '/');
-                }
                 $arrReturn['error'] = 'You are was banned! Wait 15 min';
             }
         }

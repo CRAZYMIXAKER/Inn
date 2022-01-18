@@ -21,28 +21,68 @@ class System
         return $size;
     }
 
-    function parseUrl(string $url, array $routes): array
+    function parseUrl(array $url): array
     {
-        $res = [
-            'controller' => 'errors/e404',
-            'params' => []
-        ];
+        $res = [];
+        $res['controller'] = $url[0] ?? 'File';
+        $res['method'] = $url[1] ?? 'run';
 
-        foreach ($routes as $route) {
-            $matches = [];
+        if (file_exists($this->controller($res['controller']))) {
+            $className = '\controllers\\' . $res['controller'];
+            $objClass = new $className;
 
-            if (preg_match($route['test'], $url, $matches)) {
-                $res['controller'] = $route['controller'];
-                $res['method'] = $route['method'];
-
-                if (isset($route['params'])) {
-                    foreach ($route['params'] as $name => $num) {
-                        $res['params'][$name] = $matches[$num];
-                    }
-                }
-                break;
+            if (!method_exists($objClass, $res['method']) == true) {
+                $res['controller'] = 'Error';
+                $res['method'] = 'notFound';
             }
+        } else {
+            $res['controller'] = 'Error';
+            $res['method'] = 'notFound';
         }
+
         return $res;
+    }
+
+    public function controller($fileName)
+    {
+        return $_SERVER['DOCUMENT_ROOT'] . '/Task_17/controllers/' . $fileName . '.php';
+    }
+
+    public function filterUrl($str)
+    {
+        return htmlspecialchars(trim($str));
+    }
+
+
+    public function get($name)
+    {
+        if (isset($_GET[$name])) {
+
+            if (is_array($_GET[$name])) {
+                return array_map(function ($item) {
+                    return $this->filterUrl($item);
+                }, $_GET[$name]);
+            }
+
+            return $this->filterUrl($_GET[$name]);
+
+        }
+        return false;
+    }
+
+    public function post($name)
+    {
+        if (isset($_POST[$name])) {
+
+            if (is_array($_POST[$name])) {
+                return array_map(function ($item) {
+                    return $this->filterUrl($item);
+                }, $_POST[$name]);
+            }
+
+            return $this->filterUrl($_POST[$name]);
+
+        }
+        return false;
     }
 }

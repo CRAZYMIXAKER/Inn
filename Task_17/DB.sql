@@ -15,7 +15,7 @@ CREATE TABLE sessions
 	token varchar(128) NOT NULL UNIQUE,
   dt_add timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-	FOREIGN KEY (id_user) REFERENCES Users (id_user) ON DELETE CASCADE
+	FOREIGN KEY (id_user) REFERENCES users (id_user) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 INSERT users

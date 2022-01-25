@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require __DIR__ . '/vendor/autoload.php';
 
@@ -84,6 +83,7 @@ class Test
 $_SESSION['user'] = (new core\Auth)->authGetUser();
 
 $pathToView = "v_404";
+$pageTitle = $pageContent = '';
 $uri = $_SERVER['REQUEST_URI'];
 $badUrl = '/' . 'index.php';
 
@@ -91,20 +91,10 @@ if (str_starts_with($uri, $badUrl)) {
     $controller = 'Error';
     $method = 'badUrl';
 } else {
-    $routes = include('routes.php');
-    $url = $_GET['querysystemurl'] ?? '';
-
-    $routerRes = (new core\System)->parseUrl($url, $routes);
-    $controller = $routerRes['controller'];
-    $method = $routerRes['method'];
-    define('URL_PARAMS', $routerRes['params']);
-}
-$pathToController = "controllers/$controller.php";
-$pageTitle = $pageContent = '';
-
-if (!file_exists($pathToController)) {
-    $controller = 'Error';
-    $method = 'notFound';
+    $_url = array_filter(explode('/', (new core\System)->get('url')));
+    $parseUrl = (new core\System)->parseUrl($_url);
+    $controller = $parseUrl['controller'];
+    $method = $parseUrl['method'];
 }
 
 $class = "controllers\\" . $controller;
@@ -116,7 +106,5 @@ $html = (new core\Twig)->template($pageContent === '' ? $pathToView : $pageConte
     $pageContent === '' ? ['title' => $pageTitle] : $pageContent);
 
 echo $html;
-
-
 
 new Test();

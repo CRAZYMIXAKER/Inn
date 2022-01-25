@@ -119,7 +119,7 @@ class __TwigTemplate_cbc0efbf7a53dc7618a10a50db8724ea08072e396831bbafba8c6c54b5b
         <button>Registration</button>
         <br>
     </form>
-    <div><a href=\"../\">Are you already registered?</a></div>
+    <div><a href=\"/Task_18/Authorization/signIn\">Are you already registered?</a></div>
 ";
     }
 
@@ -140,6 +140,6 @@ class __TwigTemplate_cbc0efbf7a53dc7618a10a50db8724ea08072e396831bbafba8c6c54b5b
 
     public function getSourceContext()
     {
-        return new Source("", "v_reg.twig", "C:\\OpenServer\\domains\\Inn\\Task_17\\views\\v_reg.twig");
+        return new Source("", "v_reg.twig", "C:\\OpenServer\\domains\\Inn\\Task_18\\views\\v_reg.twig");
     }
 }

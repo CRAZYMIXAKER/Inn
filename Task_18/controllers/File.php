@@ -42,7 +42,7 @@ class File extends Validates
                 ];
             }
         } else {
-            header("Location: Authorization/signIn");
+            header("Location: /Task_18/Authorization/signIn");
             exit();
         }
 

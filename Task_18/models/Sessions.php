@@ -35,6 +35,6 @@ class Sessions extends DB
         $sql = "SELECT * FROM sessions WHERE token=:token";
         $query = $this->dbQuery($sql, ['token' => $token]);
         $session = $query->fetch();
-        return $session === false ? null : $session;
+        return (!$session) ? null : $session;
     }
 }

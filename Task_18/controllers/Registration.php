@@ -39,7 +39,7 @@ class Registration extends Users
 
                 $this->userAdd($fields);
 
-                header("Location: /Task_18");
+                header("Location: ../");
                 exit();
             } else {
                 $arrReturn['errors'] = $errors;

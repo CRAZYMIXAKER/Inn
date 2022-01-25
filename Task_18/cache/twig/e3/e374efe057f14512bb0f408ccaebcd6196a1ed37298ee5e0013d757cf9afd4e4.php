@@ -75,7 +75,7 @@ class __TwigTemplate_8718e673d04602b9e11041afe14c628e9f976781c6672fce9f50fed9055
         echo (($context["error"]) ?? (""));
         echo "</div>
     </form>
-    <div><a href=\"/Task_17/Registration/signUp\">Are you not registered?</a></div>
+    <div><a href=\"/Task_18/Registration/signUp\">Are you not registered?</a></div>
 ";
     }
 

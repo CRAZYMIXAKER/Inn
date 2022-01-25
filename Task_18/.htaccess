@@ -1,15 +1,26 @@
-RewriteEngine on
+RewriteEngine On
 
-# Rewrite all other URLs to index.php?[URL]
+# ensure https
+#RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#RewriteCond %{HTTPS} off
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#RewriteCond %{HTTP_HOST} !^hazirbant.com.tr$ [NC]
+#RewriteRule ^(.*)$ https://hazirbant.com.tr/$1 [L,R=301]
+
+AddDefaultCharset utf-8
+
+# Root klasör yolumuzu belirtiyoruz. (resim dosyalarının seo su için.)
+RewriteRule . - [E=REWRITEBASE:/]
+
+# slash "/" işaretleri klasör değilse yönlendiriyoruz...
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# url parametresinden gelen herşeyi sef yapıyoruz...
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule .* index.php?querysystemurl=$0 [QSA]
 
-Options -Indexes
-
-<FilesMatch "\.(php|twig|log)$">
-	Deny from all
-</FilesMatch>
-
-<FilesMatch "^index.(php)$">
-	Allow from all
-</FilesMatch>
+RewriteRule ^([0-9a-zA-Z-_/]+)$   index.php?url=$1 [QSA]
+RewriteRule ^sitemap.xml$         sitemap.php [L,NC]

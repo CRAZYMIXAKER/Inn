@@ -6,7 +6,7 @@ use controllers\Authorization;
 
 class Test
 {
-    protected $folders;
+    protected array $folders;
 
     public function __construct()
     {
@@ -85,17 +85,13 @@ $_SESSION['user'] = (new core\Auth)->authGetUser();
 $pathToView = "v_404";
 $pageTitle = $pageContent = '';
 $uri = $_SERVER['REQUEST_URI'];
-$badUrl = '/' . 'index.php';
 
-if (str_starts_with($uri, $badUrl)) {
-    $controller = 'Error';
-    $method = 'badUrl';
-} else {
-    $_url = array_filter(explode('/', (new core\System)->get('url')));
-    $parseUrl = (new core\System)->parseUrl($_url);
-    $controller = $parseUrl['controller'];
-    $method = $parseUrl['method'];
-}
+$url = parse_url($uri, PHP_URL_PATH);
+$_url = array_values(array_filter(explode('/', $url)));
+$parseUrl = (new core\System)->parseUrl($_url);
+$controller = $parseUrl['controller'];
+$method = $parseUrl['method'];
+
 
 $class = "controllers\\" . $controller;
 $objClass = new $class;

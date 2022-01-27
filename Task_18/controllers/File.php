@@ -60,7 +60,6 @@ class File extends Validates
         $dir = 'upload';
         $uploadDir = "$dir/";
         $uploadFile = $uploadDir . basename($file['name']);
-
         $error = $this->fileUpload($file);
 
         if (empty($error)) {

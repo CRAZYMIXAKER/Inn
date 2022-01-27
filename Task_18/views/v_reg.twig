@@ -1,0 +1,45 @@
+{% extends 'v_base.twig' %}
+
+{% block main %}
+    <h1>{{ title }}</h1>
+    <form action="" method="post">
+        <div class="form__item">
+            <label class="form__label">Name</label><br>
+            <input class="form__input" type="text" name="firstName" value="{{ fields.firstName ?? '' }}" required/>
+            <label class="error">{{ errors.firstName ?? '' }}</label>
+        </div>
+        <div class="form__item">
+            <label class="form__label">LastName</label><br>
+            <input class="form__input" type="text" name="lastName" value="{{ fields.lastName ?? '' }}" required/>
+            <label class="error">{{ errors.lastName ?? ''}}</label>
+        </div>
+        <div class="form__item">
+            <label class="form__label">E-mail</label><br>
+            <input class="form__input" type="email" name="email" value="{{ fields.email ?? '' }}"
+                   pattern="^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email@gmail.com" required/>
+            <label class="error">{{ errors.email ?? '' }}</label>
+        </div>
+        <div class="form__item">
+            <label class="form__label">E-mail Confirm</label><br>
+            <input class="form__input" type="email" name="emailConfirm" value="{{ fields.emailConfirm ?? '' }}"
+                   pattern="^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email@gmail.com" required/>
+            <label class="error">{{ errors.emailConfirm ?? ''}}</label>
+        </div>
+        <div class="form__item">
+            <label class="form__label">Password</label><br>
+            <input class="form__input" type="password" name="password"
+                   pattern="^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[@$!%*?&-_#]).{6,32}$" required/>
+            <label class="error">{{ errors.password ?? '' }}</label>
+        </div>
+        <div class="form__item">
+            <label class="form__label">Password Confirm</label><br>
+            <input class="form__input" type="password" name="passwordConfirm"
+                   pattern="^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[@$!%*?&-_#]).{6,32}$" required/>
+            <label class="error">{{ errors.passwordConfirm ?? '' }}</label>
+        </div>
+        <br>
+        <button>Registration</button>
+        <br>
+    </form>
+    <div><a href="/Task_18/Authorization/signIn">Are you already registered?</a></div>
+{% endblock %}

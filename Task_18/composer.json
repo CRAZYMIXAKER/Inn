@@ -1,0 +1,20 @@
+{
+    "name": "zs/task_17",
+    "license": "",
+    "autoload": {
+        "psr-4": {
+            "controllers\\": "controllers/",
+            "models\\": "models/",
+            "core\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CRAZYMIXAKER",
+            "email": "zombisuki@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.3"
+    }
+}

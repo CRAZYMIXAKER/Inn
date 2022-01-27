@@ -1,0 +1,25 @@
+{% extends 'v_base.twig' %}
+
+{% block main %}
+    <h1>{{ title }}</h1>
+
+    <form action="" method="post">
+        <label for="email">E-mail</label>
+        <br>
+        <input id="email" type="email" name="email" placeholder="Email@gmail.com" value="{{ email ?? '' }}"
+               pattern="^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autofocus required>
+        <br>
+        <label for="password">Password</label>
+        <br>
+        <input id="password" type="password" name="password" placeholder="password" required>
+        <br>
+        <div class="checkbox">
+            <input class="checkbox__input" id="checkbox" type="checkbox" name="remember">
+            <label class="checkbox__label" for="checkbox"> Remember me for 1 week</label>
+        </div><br>
+        <button>Authorization</button>
+        <br>
+        <div>{{ error ?? '' }}</div>
+    </form>
+    <div><a href="/Task_18/Registration/signUp">Are you not registered?</a></div>
+{% endblock %}
